@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Hanoi Problem/Hanoi Problem" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/01/12/Hanoi%20Problem/Hanoi%20Problem/" class="article-date">
+  <time class="dt-published" datetime="2022-01-12T04:17:00.181Z" itemprop="datePublished">2022-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Hanoi-Problem"><a href="#Hanoi-Problem" class="headerlink" title="Hanoi Problem"></a>Hanoi Problem</h1><ul>
+<li>There are three poles and N disks where each disk is heaver/bigger than the next disk. In the initial conguration, the discs are stacked upon another on the first pole where the lighter discs are above the heavier discs. We want to move all the discs to the last pole with the following conditions:<ul>
+<li>Only one disc can be moved from one pole to another at a time.<br>一次只能将一个圆盘从一个极移动到另一个极。</li>
+<li>The discs have to be stacked such that all the lighter discs are on top of the heavier ones.<br>必须将光盘堆叠起来，以使所有较轻的光盘都放在较重的光盘上。</li>
+</ul>
+</li>
+</ul>
+<p><code>disc</code> <code>disk</code> <code>pole</code></p>
+<h2 id="Recursion："><a href="#Recursion：" class="headerlink" title="Recursion："></a>Recursion：</h2><p>递归:</p>
+<ul>
+<li>解答思路<br>  To move N discs from the first pole to the last pole, we need to move N-1 discs to the middle pole, then move the Nth disc to the last pole, and then move all N-1 discs from the middle pole back to the last pole.<br>  要将N个圆盘从第一个极点移动到最后一个极点，我们需要将N-1圆盘移动到中间极点，然后将第N个圆盘移动到最后一个极点，然后将所有N-1圆盘从中间极点移回最后一个极点。</li>
+<li>解决代码<br>  <a href="file/Hanoi.java">Hanoi.java</a>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">C001TowerOfHanoiByJava</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        C001TowerOfHanoiByJava hanoi = <span class="keyword">new</span> C001TowerOfHanoiByJava();</span><br><span class="line">        hanoi.hanoiAction(<span class="number">3</span>,<span class="string">&quot;A&quot;</span>,<span class="string">&quot;B&quot;</span>,<span class="string">&quot;C&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">hanoiAction</span><span class="params">(<span class="keyword">int</span> n, String a, String b, String c)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>( n &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">            hanoiAction(n-<span class="number">1</span>, a, c, b);</span><br><span class="line">            System.out.println(<span class="string">&quot;from &quot;</span> + a + <span class="string">&quot; to &quot;</span> + c);</span><br><span class="line">            hanoiAction(n-<span class="number">1</span>, b, a, c);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="变型问题"><a href="#变型问题" class="headerlink" title="变型问题"></a>变型问题</h3><ul>
+<li>多柱情况的Hanoi</li>
+<li>显示每个移动步骤后当前各柱子的叠层，并显示总移动次数  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">C001TowerOfHanoiByJava</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sto[]=&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        C001TowerOfHanoiByJava hanoi = <span class="keyword">new</span> C001TowerOfHanoiByJava();</span><br><span class="line">        System.out.println(<span class="string">&quot;the total steps:&quot;</span>+hanoi.hanoiActionAndShowNumber(<span class="number">3</span>,<span class="string">&quot;A&quot;</span>,<span class="string">&quot;B&quot;</span>,<span class="string">&quot;C&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hanoiActionAndShowNumber</span><span class="params">(<span class="keyword">int</span> n, String a, String b, String c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(i == <span class="number">0</span>)&#123;</span><br><span class="line">            sto[<span class="number">0</span>]=n;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>( n &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">            hanoiActionAndShowNumber(n-<span class="number">1</span> , a, c, b);</span><br><span class="line">            <span class="keyword">switch</span> (a)&#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;A&quot;</span>:sto[<span class="number">0</span>]--;<span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;B&quot;</span>:sto[<span class="number">1</span>]--;<span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;C&quot;</span>:sto[<span class="number">2</span>]--;<span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">switch</span> (c)&#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;A&quot;</span>:sto[<span class="number">0</span>]++;<span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;B&quot;</span>:sto[<span class="number">1</span>]++;<span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;C&quot;</span>:sto[<span class="number">2</span>]++;<span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.print(<span class="string">&quot;from &quot;</span> + a + <span class="string">&quot; to &quot;</span> + c );</span><br><span class="line">            System.out.println(<span class="string">&quot;, A:&quot;</span>+sto[<span class="number">0</span>]+<span class="string">&quot; B:&quot;</span>+sto[<span class="number">1</span>]+<span class="string">&quot; C:&quot;</span>+sto[<span class="number">2</span>]);</span><br><span class="line">            i++;</span><br><span class="line">            hanoiActionAndShowNumber(n-<span class="number">1</span>, b, a, c);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i-<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from A to C, A:2 B:0 C:1</span><br><span class="line">from A to B, A:1 B:1 C:1</span><br><span class="line">from C to B, A:1 B:2 C:0</span><br><span class="line">from A to C, A:0 B:2 C:1</span><br><span class="line">from B to A, A:1 B:1 C:1</span><br><span class="line">from B to C, A:1 B:0 C:2</span><br><span class="line">from A to C, A:0 B:0 C:3</span><br><span class="line">the total steps:7</span><br></pre></td></tr></table></figure>
+</li>
+<li>实现流程动画</li>
+<li>如何证明此解法的步骤最少，为最优解？</li>
+<li>如何用数学公式表达hanoi塔问题？</li>
+<li>手解汉诺塔</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/01/12/Hanoi%20Problem/Hanoi%20Problem/" data-id="ckyb1dz500003dwsxcxrs03ui" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Binary Search/Binary Search" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/01/12/Binary%20Search/Binary%20Search/" class="article-date">
+  <time class="dt-published" datetime="2022-01-12T04:17:00.173Z" itemprop="datePublished">2022-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h1><ul>
+<li>题目</li>
+<li>前提</li>
+<li>思路</li>
+<li>代码<ul>
+<li>ByJava</li>
+<li>ByC</li>
+<li>ByPython</li>
+<li>ByJs</li>
+</ul>
+</li>
+<li>拓展与变型</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/01/12/Binary%20Search/Binary%20Search/" data-id="ckyb1dz4y0002dwsxdurs76tf" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Algorithm" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/01/12/Algorithm/" class="article-date">
+  <time class="dt-published" datetime="2022-01-12T04:17:00.165Z" itemprop="datePublished">2022-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h1><p><a href="pp/pp.md">pp</a></p>
+<p><a href="Hanoi%20Problem/Hanoi%20Problem.md">Hanoi Problem</a></p>
+<p><a href="Binary%20Search/Binary%20Search.md">Binary Search</a></p>
+<p><a href="Tower%20Of%20Hanoi%20Probl/Tower%20Of%20Hanoi%20Probl.md">Tower Of Hanoi Problem</a></p>
+<p>添加一个算法题</p>
+<p><a href="%E6%96%B0%E9%A1%B5%E9%9D%A2/%E6%96%B0%E9%A1%B5%E9%9D%A2.md">新页面</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/01/12/Algorithm/" data-id="ckyb1dz4j0000dwsx6ci9eylk" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-新页面/新页面" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/01/12/%E6%96%B0%E9%A1%B5%E9%9D%A2/%E6%96%B0%E9%A1%B5%E9%9D%A2/" class="article-date">
+  <time class="dt-published" datetime="2022-01-12T04:17:00.161Z" itemprop="datePublished">2022-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="新页面"><a href="#新页面" class="headerlink" title="新页面"></a>新页面</h1><ul>
+<li>题目</li>
+<li>前提</li>
+<li>思路</li>
+<li>代码<ul>
+<li>ByJava</li>
+<li>ByC</li>
+<li>ByPython</li>
+<li>ByJs</li>
+</ul>
+</li>
+<li>拓展与变型</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/01/12/%E6%96%B0%E9%A1%B5%E9%9D%A2/%E6%96%B0%E9%A1%B5%E9%9D%A2/" data-id="ckyb1dz560006dwsx6yiidkir" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Tower Of Hanoi Probl/Tower Of Hanoi Probl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/01/12/Tower%20Of%20Hanoi%20Probl/Tower%20Of%20Hanoi%20Probl/" class="article-date">
+  <time class="dt-published" datetime="2022-01-12T04:17:00.153Z" itemprop="datePublished">2022-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Tower-Of-Hanoi-Problem"><a href="#Tower-Of-Hanoi-Problem" class="headerlink" title="Tower Of Hanoi Problem"></a>Tower Of Hanoi Problem</h1><ul>
+<li>题目与限定</li>
+<li>思路</li>
+<li>代码<ul>
+<li>ByJava</li>
+<li>ByC</li>
+<li>ByPython</li>
+<li>ByJs</li>
+</ul>
+</li>
+<li>拓展与变型</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/01/12/Tower%20Of%20Hanoi%20Probl/Tower%20Of%20Hanoi%20Probl/" data-id="ckyb1dz520004dwsx8ehc70we" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-pp/pp" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/01/12/pp/pp/" class="article-date">
+  <time class="dt-published" datetime="2022-01-12T04:17:00.144Z" itemprop="datePublished">2022-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="pp"><a href="#pp" class="headerlink" title="pp"></a>pp</h1><ul>
+<li></li>
+<li>常数时间操作</li>
+<li></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/01/12/pp/pp/" data-id="ckyb1dz540005dwsx3cbt768k" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/01/12/hello-world/" class="article-date">
+  <time class="dt-published" datetime="2022-01-12T04:09:31.125Z" itemprop="datePublished">2022-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/01/12/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/01/12/hello-world/" data-id="ckyb1dz4v0001dwsx965df9rg" data-title="Hello World" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/01/12/Hanoi%20Problem/Hanoi%20Problem/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/12/Binary%20Search/Binary%20Search/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/12/Algorithm/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/12/%E6%96%B0%E9%A1%B5%E9%9D%A2/%E6%96%B0%E9%A1%B5%E9%9D%A2/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/12/Tower%20Of%20Hanoi%20Probl/Tower%20Of%20Hanoi%20Probl/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
